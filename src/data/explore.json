@@ -1,0 +1,42 @@
+{
+  "exclusiveOffer": [
+    {
+      "name": "Organic Bananas",
+      "price": 1.99,
+      "quantity": "per lb",
+      "image": "https://media.istockphoto.com/id/577324910/photo/ripe-banana-isolated.jpg?s=1024x1024&w=is&k=20&c=PtIGx99tGTlS3lbKKb2vsKr3cutb61OPjJGv_kEJN80="
+    },
+    {
+      "name": "Red Applez",
+      "price": 3.49,
+      "quantity": "per lb",
+      "image": "https://media.istockphoto.com/id/925389178/photo/red-apple-fruit-with-green-leaf-isolated-on-white.jpg?s=612x612&w=0&k=20&c=_8d-RRR3BX36MwIOBZuN-bV-wp02C0WNCEo7fp0hqhA="
+    },
+    {
+      "name": "Fresh Strawberries",
+      "price": 4.99,
+      "quantity": "per lb",
+      "image": "https://media.istockphoto.com/id/471674664/photo/two-strawberries-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=a5g5o0t4M5qGInHo4gKNa07TRdz0HHzZ31UmGW9HuBk="
+    }
+  ],
+  "bestSelling": [
+    {
+      "name": "Bell Peppers",
+      "price": 2.99,
+      "quantity": "per lb",
+      "image": "https://media.istockphoto.com/id/1130564105/photo/sweet-pepper-paprika-isolated-on-white-background-clipping-path-full-depth-of-field.jpg?s=1024x1024&w=is&k=20&c=YIk6eMVb-UtFJAiWfBtqcP38Ld-WOyO_odYN8iy-KWM="
+    },
+    {
+      "name": "Ginger",
+      "price": 1.49,
+      "quantity": "per lb",
+      "image": "https://media.istockphoto.com/id/511851020/photo/fresh-ginger-root-or-rhizome-isolated-on-white-background-cutout.jpg?s=612x612&w=0&k=20&c=3EGls2tS0ml61Y_KEw-BlH6MsZoZm9owHFl2VFHy-8c="
+    },
+    {
+      "name": "Garlic",
+      "price": 1.99,
+      "quantity": "per lb",
+      "image": "https://media.istockphoto.com/id/2058002828/photo/garlic-bulb-and-clove-isolated-garlic-bulbs-with-cloves-on-white-background-white-garlic-bulb.jpg?s=612x612&w=0&k=20&c=QmHcpqB2c5T_av195UeI8d0InVpXwLuoiHoccwaHZkE="
+    }
+  ]
+}

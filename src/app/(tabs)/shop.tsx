@@ -2,9 +2,11 @@ import { KeyboardAwareScreen } from "@/components/kkeyboard-aware-screen";
 import ShopSlider from "@/components/shop-slider";
 import { ThemedText } from "@/components/themed-text";
 import { Colors } from "@/constants/colors";
+import { bestSelling, exclusiveOffer } from "@/data/explore.json";
 import { Image } from "expo-image";
-import { Location, SearchNormal } from "iconsax-react-nativejs";
-import { TextInput, View } from "react-native";
+import { router } from "expo-router";
+import { Add, Location, SearchNormal } from "iconsax-react-nativejs";
+import { FlatList, TextInput, TouchableOpacity, View } from "react-native";
 
 const Home = () => {
   return (
@@ -92,7 +94,7 @@ const Home = () => {
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-between",
-          marginTop: 15,
+          marginTop: 25,
         }}
       >
         <ThemedText style={{ fontSize: 24 }}>Exclusive Offer</ThemedText>
@@ -100,48 +102,173 @@ const Home = () => {
           See all
         </ThemedText>
       </View>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
-      <ThemedText style={{ marginTop: 50 }}>Hello from Home</ThemedText>
+
+      <FlatList
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        nestedScrollEnabled
+        data={exclusiveOffer}
+        keyExtractor={(item, index) =>
+          item.name?.toString() ?? index.toString()
+        }
+        style={{ marginTop: 15, alignSelf: "stretch" }}
+        contentContainerStyle={{ paddingRight: 10 }}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            onPress={() => router.replace("/(noTabs)/product_details")}
+            activeOpacity={1}
+            style={{
+              marginRight: 15,
+              borderWidth: 1,
+              borderColor: "#E2E2E2",
+              borderRadius: 18,
+              overflow: "hidden",
+              padding: 8,
+              width: 160,
+              height: 225,
+            }}
+          >
+            <Image
+              source={{ uri: item.image }}
+              style={{
+                width: 100,
+                height: 100,
+                alignSelf: "center",
+                marginBottom: 10,
+              }}
+              contentFit="scale-down"
+            />
+            <ThemedText
+              numberOfLines={1}
+              ellipsizeMode="tail"
+              style={{ fontWeight: "bold", fontSize: 15 }}
+            >
+              {item.name}
+            </ThemedText>
+            <ThemedText style={{ fontSize: 14, color: "#7C7C7C" }}>
+              {item.quantity}
+            </ThemedText>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <ThemedText
+                numberOfLines={1}
+                ellipsizeMode="tail"
+                style={{ fontWeight: "bold", fontSize: 15 }}
+              >
+                ${item.price.toFixed(2)}
+              </ThemedText>
+              <TouchableOpacity
+                style={{
+                  backgroundColor: Colors.green,
+                  width: 45,
+                  height: 45,
+                  borderRadius: 18,
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Add size="32" color="#ffffff" />
+              </TouchableOpacity>
+            </View>
+          </TouchableOpacity>
+        )}
+      />
+
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          marginTop: 25,
+        }}
+      >
+        <ThemedText style={{ fontSize: 24 }}>Best Selling</ThemedText>
+        <ThemedText style={{ color: Colors.green, fontSize: 16 }}>
+          See all
+        </ThemedText>
+      </View>
+
+      <FlatList
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        nestedScrollEnabled
+        data={bestSelling}
+        keyExtractor={(item, index) =>
+          item.name?.toString() ?? index.toString()
+        }
+        style={{ marginTop: 15, alignSelf: "stretch" }}
+        contentContainerStyle={{ paddingRight: 10 }}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            onPress={() => router.replace("/(noTabs)/product_details")}
+            activeOpacity={1}
+            style={{
+              marginRight: 15,
+              borderWidth: 1,
+              borderColor: "#E2E2E2",
+              borderRadius: 18,
+              overflow: "hidden",
+              padding: 8,
+              width: 160,
+              height: 225,
+            }}
+          >
+            <Image
+              source={{ uri: item.image }}
+              style={{
+                width: 100,
+                height: 100,
+                alignSelf: "center",
+                marginBottom: 10,
+              }}
+              contentFit="scale-down"
+            />
+            <ThemedText
+              numberOfLines={1}
+              ellipsizeMode="tail"
+              style={{ fontWeight: "bold", fontSize: 15 }}
+            >
+              {item.name}
+            </ThemedText>
+            <ThemedText style={{ fontSize: 14, color: "#7C7C7C" }}>
+              {item.quantity}
+            </ThemedText>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <ThemedText
+                numberOfLines={1}
+                ellipsizeMode="tail"
+                style={{ fontWeight: "bold", fontSize: 15 }}
+              >
+                ${item.price.toFixed(2)}
+              </ThemedText>
+              <TouchableOpacity
+                style={{
+                  backgroundColor: Colors.green,
+                  width: 45,
+                  height: 45,
+                  borderRadius: 18,
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Add size="32" color="#ffffff" />
+              </TouchableOpacity>
+            </View>
+          </TouchableOpacity>
+        )}
+      />
+      <View style={{ marginTop: 100 }} />
     </KeyboardAwareScreen>
   );
 };

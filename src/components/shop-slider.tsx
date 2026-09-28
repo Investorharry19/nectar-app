@@ -17,6 +17,7 @@ const imageSources = [
 
 export default function ShopSlider() {
   const { width } = useWindowDimensions();
+  const carouselWidth = width - 45;
   const ref = useRef<ICarouselInstance>(null);
   const progress = useSharedValue(0);
 
@@ -24,14 +25,14 @@ export default function ShopSlider() {
     <View style={styles.container}>
       <Carousel
         ref={ref}
-        width={width - 40}
+        width={carouselWidth}
         height={135}
         data={data}
-        // loop
+        loop
         onProgressChange={(_, absoluteProgress) => {
           progress.value = absoluteProgress;
         }}
-        style={{ width, alignSelf: "center" }}
+        style={{ width: carouselWidth, alignSelf: "center" }}
         renderItem={({ item, index }) => (
           <View style={styles.slide}>
             <Image
