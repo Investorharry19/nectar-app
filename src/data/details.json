@@ -6,7 +6,28 @@
         "https://media.istockphoto.com/id/926771228/photo/red-apple-fruit-with-slice-and-green-leaf-isolated-on-white.jpg?s=1024x1024&w=is&k=20&c=YPfUoV6HEkkQebtIR2L3qbmpXyfh_BIufF4vIPFFIyk=",
         "https://media.istockphoto.com/id/1358137748/photo/red-apples-with-leaves-isolated-on-a-white-background.jpg?s=612x612&w=0&k=20&c=MIE1tC-Xqi2L8AjIZxaf95CBxnL2wY3Rzx6Nrg1-wqE="
       ],
-      "name": "Natural Red Apple"
+      "name": "Natural Red Apple",
+      "description": "A fresh and juicy red apple, perfect for a healthy snack or to add to your favorite recipes.",
+      "price": 1.99,
+      "nutrition": {
+        "calories": 95,
+        "carbohydrates": 25,
+        "fiber": 4,
+        "sugar": 19,
+        "protein": 0.5
+      },
+      "reviews": [
+        {
+          "user": "John Doe",
+          "rating": 5,
+          "comment": "These apples are delicious and very fresh!"
+        },
+        {
+          "user": "Jane Smith",
+          "rating": 4,
+          "comment": "Good quality apples, but a bit pricey."
+        }
+      ]
     }
   }
 }

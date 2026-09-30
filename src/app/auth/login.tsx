@@ -131,7 +131,7 @@ const Login = () => {
               marginBottom: 20,
             }}
             onPress={() => {
-              router.replace("/(tabs)/shop");
+              router.push("/(tabs)/shop");
             }}
           >
             <ThemedText

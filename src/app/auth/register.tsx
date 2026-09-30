@@ -143,7 +143,7 @@ const Register = () => {
               marginBottom: 20,
             }}
             onPress={() => {
-              router.replace("/auth/register");
+              router.push("/auth/register");
             }}
           >
             <ThemedText

@@ -5,9 +5,17 @@ import { Colors } from "@/constants/colors";
 import { details } from "@/data/details.json";
 import { Image } from "expo-image";
 import { router, useLocalSearchParams } from "expo-router";
-import { Minus } from "iconsax-react-nativejs";
-import { ChevronLeft, Heart, Plus } from "lucide-react-native";
-import { View } from "react-native";
+import { Minus, Star1 } from "iconsax-react-nativejs";
+import { ChevronDown, ChevronLeft, Heart, Plus } from "lucide-react-native";
+import { TouchableOpacity, View } from "react-native";
+
+const nutritionRanges: Record<string, number> = {
+  calories: 200,
+  carbohydrates: 60,
+  fiber: 10,
+  sugar: 30,
+  protein: 10,
+};
 
 const ProductDetails = () => {
   const { productName } = useLocalSearchParams();
@@ -102,6 +110,196 @@ const ProductDetails = () => {
           $30
         </ThemedText>
       </View>
+      <View
+        style={{
+          height: 2,
+          width: "100%",
+          backgroundColor: "#E2E2E2",
+          marginVertical: 20,
+        }}
+      />
+      <View>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <ThemedText style={{ fontSize: 16, fontWeight: "bold" }}>
+            Product Details
+          </ThemedText>
+          <ChevronDown />
+        </View>
+        <ThemedText style={{ fontSize: 14, color: "#7C7C7C", marginTop: 10 }}>
+          {details.apples.description}
+        </ThemedText>
+      </View>
+      <View
+        style={{
+          height: 2,
+          width: "100%",
+          backgroundColor: "#E2E2E2",
+          marginVertical: 20,
+        }}
+      />
+
+      <View>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <ThemedText style={{ fontSize: 16, fontWeight: "bold" }}>
+            Nutritions
+          </ThemedText>
+          <ChevronDown />
+        </View>
+        <View
+          style={{
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginTop: 10,
+          }}
+        >
+          {details.apples.nutrition &&
+            Object.entries(details.apples.nutrition).map(([key, value]) => {
+              const range = nutritionRanges[key] ?? Math.max(value, 1);
+              const progress = Math.min(
+                Math.max((value / range) * 100, 0),
+                100,
+              );
+
+              return (
+                <View key={key} style={{ width: "100%", marginVertical: 7 }}>
+                  <View
+                    style={{
+                      alignItems: "center",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      marginBottom: 6,
+                    }}
+                  >
+                    <ThemedText style={{ fontSize: 14, color: "#7C7C7C" }}>
+                      {key.charAt(0).toUpperCase() + key.slice(1)}
+                    </ThemedText>
+                    <ThemedText style={{ fontSize: 14, fontWeight: "bold" }}>
+                      {value}
+                    </ThemedText>
+                  </View>
+                  <View
+                    style={{
+                      height: 6,
+                      width: "100%",
+                      overflow: "hidden",
+                      borderRadius: 3,
+                      backgroundColor: "#E8F3EB",
+                    }}
+                  >
+                    <View
+                      style={{
+                        height: "100%",
+                        width: `${progress}%`,
+                        borderRadius: 3,
+                        backgroundColor: "#53B175",
+                      }}
+                    />
+                  </View>
+                </View>
+              );
+            })}
+        </View>
+      </View>
+
+      <View
+        style={{
+          height: 2,
+          width: "100%",
+          backgroundColor: "#E2E2E2",
+          marginVertical: 20,
+        }}
+      />
+
+      <View>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <ThemedText style={{ fontSize: 16, fontWeight: "bold" }}>
+            Reviews
+          </ThemedText>
+          <ChevronDown />
+        </View>
+        <View>
+          {details.apples.reviews &&
+            details.apples.reviews.map((review, index) => (
+              <View key={index} style={{ marginVertical: 10 }}>
+                <ThemedText style={{ fontSize: 14, fontWeight: "bold" }}>
+                  {review.user}
+                </ThemedText>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    marginTop: 5,
+                  }}
+                >
+                  {[...Array(5)].map((_, i) => {
+                    const isRated = i < review.rating;
+
+                    return (
+                      <Star1
+                        key={i}
+                        size={16}
+                        color={isRated ? "#F4B400" : "#B3B3B3"}
+                        variant={isRated ? "Bold" : "Linear"}
+                      />
+                    );
+                  })}
+                  <ThemedText style={{ fontSize: 12, marginLeft: 6 }}>
+                    {review.rating}/5
+                  </ThemedText>
+                </View>
+                <ThemedText
+                  style={{ fontSize: 14, color: "#7C7C7C", marginTop: 5 }}
+                >
+                  {review.comment}
+                </ThemedText>
+              </View>
+            ))}
+        </View>
+      </View>
+      <TouchableOpacity
+        style={{
+          backgroundColor: Colors.green,
+          borderRadius: 19,
+          width: "100%",
+          height: 67,
+          alignItems: "center",
+          justifyContent: "center",
+          marginTop: 30,
+        }}
+        onPress={() => {
+          router.back();
+        }}
+      >
+        <ThemedText
+          style={{
+            fontSize: 16,
+            color: "white",
+            textAlign: "center",
+          }}
+        >
+          Back To Basket
+        </ThemedText>
+      </TouchableOpacity>
+      <View style={{ marginTop: 40 }} />
     </KeyboardAwareScreen>
   );
 };

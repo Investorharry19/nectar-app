@@ -78,7 +78,7 @@ function MyTabBar({ state, descriptors, navigation }: any) {
               key={route.key}
               //   href={route.name}
               onPressIn={() => {
-                router.replace(route.name);
+                router.push(route.name);
               }}
               accessibilityState={isFocused ? { selected: true } : {}}
               accessibilityLabel={options.tabBarAccessibilityLabel}

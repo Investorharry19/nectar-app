@@ -78,6 +78,8 @@ const Home = () => {
             fontSize: 14,
             color: "#7C7C7C",
           }}
+          placeholder="Search Store."
+          keyboardType="default"
         />
       </View>
       <View
@@ -115,7 +117,7 @@ const Home = () => {
         contentContainerStyle={{ paddingRight: 10 }}
         renderItem={({ item }) => (
           <TouchableOpacity
-            onPress={() => router.replace("/(noTabs)/product_details")}
+            onPress={() => router.push("/(noTabs)/product_details")}
             activeOpacity={1}
             style={{
               marginRight: 15,
@@ -205,7 +207,7 @@ const Home = () => {
         contentContainerStyle={{ paddingRight: 10 }}
         renderItem={({ item }) => (
           <TouchableOpacity
-            onPress={() => router.replace("/(noTabs)/product_details")}
+            onPress={() => router.push("/(noTabs)/product_details")}
             activeOpacity={1}
             style={{
               marginRight: 15,

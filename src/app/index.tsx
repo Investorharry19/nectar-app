@@ -11,7 +11,7 @@ export default function HomeScreen() {
 
   setTimeout(() => {
     console.log("Navigating to welcome screen...");
-    router.push("/auth/welcome");
+    router.push("/(tabs)/shop");
   }, 3000);
 
   return (
